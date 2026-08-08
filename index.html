@@ -138,7 +138,7 @@
 <p>The LDO utilizes an open-drain PG/OC flag. While simple in principle, its behavior across different operating phases demands a highly specialized digital filter.</p>
 
 <h3>1. The Soft-Start Chattering Problem</h3>
-<p>During power-up, the LDO's output voltage ramps up according to the soft-start capacitor. For a typical configuration, the soft-start time is in the order of milliseconds. As the voltage slowly crosses the digital logic threshold, the open-drain architecture combined with minute analog noise inevitably causes severe chattering on the PG/OC line. Standard synchronous sampling will misinterpret this chatter as a series of rapid fault-and-recovery events.</p>
+<p>During power-up, the LDO's output voltage ramps up according to the soft-start capacitor. For a typical configuration, the soft-start time is in the order of milliseconds. As the voltage slowly crosses the digital logic threshold, the open-drain architecture combined with minute analog noise inevitably causes chattering on the PG/OC line. Standard synchronous sampling will misinterpret this chatter as a series of rapid fault-and-recovery events.</p>
 
 <h3>2. Single Event Transients (SETs)</h3>
 <p>During normal operation, the environment introduces a different threat. High-energy ion strikes can induce Single Event Transients (SETs) on the PCB traces or inside the LDO itself, manifesting as nanosecond-scale glitches. Additionally, harsh load-step ringing can momentarily dip the voltage. If the monitoring logic treats every falling edge as an instant failure, the system will suffer from continuous false-positive fault latching.</p>
